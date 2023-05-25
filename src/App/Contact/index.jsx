@@ -1,7 +1,12 @@
 import React from 'react'
+import Footer from "../../components/Footer";
+import Header from "../../components/Header";
 
 const Contact = () => {
   return (
+    <>
+    <Header />
+    
     
 <section class="mb-4">
 
@@ -91,6 +96,8 @@ const Contact = () => {
     </div>
 
 </section>
+<Footer />
+</>
   )
 }
 
