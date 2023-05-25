@@ -1,9 +1,13 @@
-import { Button, Stack, TextField } from "@mui/material";
+import { Button, Stack, TextField, Typography } from "@mui/material";
 import React from "react";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { MuiTelInput } from "mui-tel-input";
+import Footer from "../../components/Footer";
+import Header from "../../components/Header";
+
+import { useNavigate } from "react-router-dom";
 
 const schema = yup.object().shape({
   firstName: yup.string().required("First name is required**"),
@@ -26,84 +30,129 @@ const Register = () => {
   } = useForm({
     resolver: yupResolver(schema),
   });
+
+  const navigate = useNavigate();
   const onSubmit = async (data) => await alert(JSON.stringify(data));
 
   return (
     <Stack
-      component="form"
-      onSubmit={handleSubmit(onSubmit)}
-      p={5}
-      spacing={2}
       sx={{
-        maxWidth: "600px",
-        display: "grid",
-        gap: 5,
-        gridTemplateColumns: "repeat(2, 1fr)",
+        height: "100%",
+        width: "100vw",
+        flexGrow: 1,
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
       }}>
-      <Stack>
-        <TextField
-          {...register("firstName")}
-          variant="outlined"
-          label="First Name"
-          error={!!errors.firstName}
-          helperText={errors.firstName?.message}
-        />
+      <Header />
+      <Typography sx={{ marginBottom: "20px", marginTop: "20px" }} variant="h5">
+        Welcome tenant{" "}
+        <Typography
+          sx={{ fontWeight: "700" }}
+          variant="h4"
+          color="secondary.main"
+          component="span">
+          REGISTER
+        </Typography>
+      </Typography>
+      <Stack
+        component="form"
+        onSubmit={handleSubmit(onSubmit)}
+        sx={{
+          maxWidth: "600px",
+          display: "grid",
+          gridGap: "25px",
+          gridTemplateColumns: "1fr 1fr",
+          marginBottom: "40px",
+          "@media (max-width: 600px)": {
+            display: "flex",
+            width: "90vw",
+            marginRight: "auto",
+            marginLeft: "auto",
+            flexDirection: "column",
+            marginBottom: "40px",
+          },
+        }}>
+        <Stack>
+          <TextField
+            sx={{ width: "100%" }}
+            {...register("firstName")}
+            variant="outlined"
+            label="First Name"
+            error={!!errors.firstName}
+            helperText={errors.firstName?.message}
+          />
+        </Stack>
+        <Stack>
+          <TextField
+            {...register("lastName")}
+            variant="outlined"
+            label="Last Name"
+            error={!!errors.lastName}
+            helperText={errors.lastName?.message}
+          />
+        </Stack>
+        <Stack>
+          <TextField
+            {...register("email")}
+            variant="outlined"
+            label="Email"
+            error={!!errors.email}
+            helperText={errors.email?.message}
+          />
+        </Stack>
+        <Stack>
+          <Controller
+            name="phoneNumber"
+            control={control}
+            render={({ field }) => (
+              <MuiTelInput
+                {...field}
+                label="Phone Number"
+                error={!!errors.phoneNumber}
+                helperText={errors.phoneNumber?.message}
+              />
+            )}
+          />
+        </Stack>
+        <Stack>
+          <TextField
+            {...register("date")}
+            variant="outlined"
+            label="Date"
+            type="date"
+            error={!!errors.date}
+            helperText={errors.date?.message}
+          />
+        </Stack>
+        <Stack>
+          <TextField
+            {...register("password")}
+            variant="outlined"
+            label="Password"
+            error={!!errors.password}
+            helperText={errors.password?.message}
+          />
+        </Stack>
+        <Stack sx={{ gridColumn: "span 2" }}>
+          <Button size="large" type="submit" variant="contained">
+            Submit
+          </Button>
+        </Stack>
+
+        <Typography sx={{ alignSelf: "end" }} variant="body1" color="grey">
+          Already have an account?{" "}
+          <Typography
+            onClick={() => navigate("/login")}
+            sx={{ cursor: "pointer", textDecoration: "underline" }}
+            color="primary.main"
+            component="span"
+            variant="body2">
+            Login
+          </Typography>
+        </Typography>
       </Stack>
-      <Stack>
-        <TextField
-          {...register("lastName")}
-          variant="outlined"
-          label="Last Name"
-          error={!!errors.lastName}
-          helperText={errors.lastName?.message}
-        />
-      </Stack>
-      <Stack>
-        <TextField
-          {...register("email")}
-          variant="outlined"
-          label="Email"
-          error={!!errors.email}
-          helperText={errors.email?.message}
-        />
-      </Stack>
-      <Stack>
-        <Controller
-          name="phoneNumber"
-          control={control}
-          render={({ field }) => (
-            <MuiTelInput
-              {...field}
-              error={!!errors.phoneNumber}
-              helperText={errors.phoneNumber?.message}
-            />
-          )}
-        />
-      </Stack>
-      <Stack>
-        <TextField
-          {...register("date")}
-          variant="outlined"
-          label="Date"
-          type="date"
-          error={!!errors.date}
-          helperText={errors.date?.message}
-        />
-      </Stack>
-      <Stack>
-        <TextField
-          {...register("password")}
-          variant="outlined"
-          label="Password"
-          error={!!errors.password}
-          helperText={errors.password?.message}
-        />
-      </Stack>
-      <Stack sx={{ gridColumn: "2fr" }}>
-        <Button size="large" type="submit" variant="contained">
-          Submit
-        </Button>
-      </Stack>
+      <Footer />
     </Stack>
   );
 };
