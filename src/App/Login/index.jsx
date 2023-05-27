@@ -39,8 +39,8 @@ const Login = () => {
         alignItems: "center",
       }}>
       <Header />
-      <Typography sx={{ marginBottom: "20px", marginTop: "20px" }} variant="h5">
-        Welcome back!!{" "}
+      <Typography sx={{ marginBottom: "20px", marginTop: "80px" }} variant="h5">
+        Welcome back Tenant!!{" "}
         <Typography
           sx={{ fontWeight: "700" }}
           variant="h4"

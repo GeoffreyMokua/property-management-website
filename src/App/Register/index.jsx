@@ -1,5 +1,8 @@
 import { Button, Stack, TextField, Typography } from "@mui/material";
 import React from "react";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -45,14 +48,14 @@ const Register = () => {
         alignItems: "center",
       }}>
       <Header />
-      <Typography sx={{ marginBottom: "20px", marginTop: "20px" }} variant="h5">
-        Welcome tenant{" "}
+      <Typography sx={{ marginBottom: "20px", marginTop: "80px" }} variant="h5">
+        Welcome New Tenant{" "}
         <Typography
           sx={{ fontWeight: "700" }}
           variant="h4"
           color="secondary.main"
           component="span">
-          REGISTER
+          Create Account
         </Typography>
       </Typography>
       <Stack
@@ -116,14 +119,24 @@ const Register = () => {
           />
         </Stack>
         <Stack>
-          <TextField
-            {...register("date")}
-            variant="outlined"
-            label="Date"
-            type="date"
-            error={!!errors.date}
-            helperText={errors.date?.message}
-          />
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <Controller
+              name="date"
+              control={control}
+              render={({ field }) => (
+                <DatePicker
+                  {...field}
+                  slotProps={{
+                    textField: {
+                      error: !!errors.date,
+                      helperText: errors.date?.message,
+                    },
+                  }}
+                  label="Move in date"
+                />
+              )}
+            />
+          </LocalizationProvider>
         </Stack>
         <Stack>
           <TextField
@@ -148,7 +161,7 @@ const Register = () => {
             color="primary.main"
             component="span"
             variant="body2">
-            Login
+            Log in
           </Typography>
         </Typography>
       </Stack>
