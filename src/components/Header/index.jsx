@@ -49,7 +49,7 @@ export default function Header(props: Props) {
       <Divider />
       <List>
         {navItems.map((item) => (
-          <ListItem key={item.name} disablePadding>
+          <ListItem  onClick={() => navigate(item.path)} key={item.name} disablePadding>
             <ListItemButton sx={{ textAlign: "center" }}>
               <ListItemText primary={item.name} />
             </ListItemButton>
