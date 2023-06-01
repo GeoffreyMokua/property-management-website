@@ -1,0 +1,31 @@
+.booking {
+    background-color: #05014a;
+    width: auto;
+    display: flex;
+    height: 400px;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.title {
+    color: white;
+    font-family: 'Arial Narrow Bold', sans-serif;
+    font-size: 48px;
+}
+
+.button-app {
+    background-color: green;
+    padding: 3%;
+    color: white;
+    border: 1px solid green;
+    border-radius: 20px;
+    font-weight: 700px;
+    font-size: 24px;
+
+}
+
+.button-app:hover {
+    background-color: yellow;
+    color: green;
+}
