@@ -2,7 +2,7 @@
     background-color: #05014a;
     width: auto;
     display: flex;
-    height: 600px;
+    height: 400px;
     justify-content: center;
     align-items: center;
 }
@@ -11,7 +11,7 @@
 .title {
     color: white;
     font-family: 'Arial Narrow Bold', sans-serif;
-    font-size: 48px;
+    font-size: 30px;
 }
 
 .button-app {
