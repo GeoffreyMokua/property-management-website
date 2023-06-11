@@ -1,6 +1,6 @@
 import { Button, Stack, TextField, Typography } from "@mui/material";
 import React from "react";
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 // import { MuiTelInput } from "mui-tel-input";
@@ -19,7 +19,6 @@ const schema = yup.object().shape({
 const Login = () => {
   const {
     register,
-    control,
     handleSubmit,
     formState: { errors },
   } = useForm({
