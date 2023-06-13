@@ -1,7 +1,7 @@
-import React from 'react'
-import './Banner.css'
+import React from "react";
+import "./Banner.css";
+import { Link } from "react-router-dom";
 // import { Carousel } from 'react-bootstrap';
-
 
 function Banner() {
   return (
@@ -15,9 +15,16 @@ function Banner() {
         <p>
           Improving the Lives of Real Estate Investors and Residents Since 2022
         </p>
+        <div className="col-lg-2 col-6">
+          <Link to="/contact">
+            <button className="button-app">
+              Discover More<i class="fas fa-arrow-alt-circle-right"></i>
+            </button>
+          </Link>
+        </div>
       </div>
     </section>
   );
 }
 
-export default Banner
+export default Banner;
