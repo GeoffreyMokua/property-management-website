@@ -7,7 +7,7 @@ function Development() {
   return (
     <>
       <Header />
-      <section class="showcase">
+      <section class="show">
         <img
           src="https://img.freepik.com/free-photo/modern-luxury-domestic-room-comfortable-relaxation-generative-ai_188544-12679.jpg"
           alt="P"

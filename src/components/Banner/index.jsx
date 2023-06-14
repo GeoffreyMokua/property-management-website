@@ -11,7 +11,9 @@ function Banner() {
         alt="P"
       />
       <div class="overlay">
-        <h2>Golden Property Management</h2>
+        <strong>
+          <h2>Golden Management</h2>
+        </strong>
         <p>
           Improving the Lives of Real Estate Investors and Residents Since 2022
         </p>
