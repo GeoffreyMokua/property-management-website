@@ -37,11 +37,14 @@ body {
 
 .showcase h2 {
   margin-top: 170px;
-  font-size: 3em;
+  margin-left: 70px;
+  font-size: 5em;
+  text-align: left;
 }
 
 .showcase p {
   margin-top: 8px;
-  font-size: 1.2em;
+  margin-left: 70px;
+  text-align: left;
+  font-size: 2em;
 }
-

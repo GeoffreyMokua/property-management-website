@@ -15,7 +15,7 @@ function Banner() {
         <p>
           Improving the Lives of Real Estate Investors and Residents Since 2022
         </p>
-        <div className="col-lg-2 col-6">
+        <div className="col-sm-7 col-6">
           <Link to="/contact">
             <button className="button-app">
               Discover More<i class="fas fa-arrow-alt-circle-right"></i>
