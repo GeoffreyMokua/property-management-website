@@ -11,7 +11,7 @@ import reportWebVitals from "./reportWebVitals";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Contact from "./App/Contact";
 import Login from "./App/Login";
-import Development from "./App/Development";
+import Houses from "./App/Houses";
 import About from "./App/About";
 import Register from "./App/Register";
 const router = createBrowserRouter([
@@ -20,8 +20,8 @@ const router = createBrowserRouter([
     element: <App />,
   },
   {
-    path: "/development",
-    element: <Development />,
+    path: "/Houses",
+    element: <Houses />,
   },
 
   {
