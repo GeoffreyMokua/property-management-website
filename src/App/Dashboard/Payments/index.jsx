@@ -1,7 +1,6 @@
-import React from 'react'
+import React from "react";
 
-export const Payment = () => {
-  return (
-    <div>Payment</div>
-  )
-}
+const Payments = () => {
+  return <div>Payments</div>;
+};
+export default Payments;

@@ -1,5 +1,7 @@
 import React from "react";
 
-export const ManageProperty = () => {
+ const ManageProperty = () => {
   return <div>ManageProperty</div>;
 };
+
+export default ManageProperty

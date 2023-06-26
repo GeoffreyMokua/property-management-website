@@ -7,14 +7,22 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // import 'mdbootstrap/css/bootstrap.min.css';
 import "mdb-react-ui-kit/dist/css/mdb.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import reportWebVitals from "./reportWebVitals";
+
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Contact from "./App/Contact";
 import Login from "./App/Login";
 import About from "./App/About";
 import Register from "./App/Register";
 import Dashboard from "./App/Dashboard";
-
+import ManageTenants from "./App/Dashboard/ManageTenants";
+import ManageProperty from "./App/Dashboard/ManageProperty";
+import ManageInvoices from "./App/Dashboard/ManageInvoices";
+import Landlord from "./App/Dashboard/Landlord";
+import Caretaker from "./App/Dashboard/Caretaker";
+import Agent from "./App/Dashboard/Agent";
+import Payments from "./App/Dashboard/Payments";
+import Welcome from "./App/Dashboard/Welcome";
+import Reports from "./App/Dashboard/Reports";
 
 const router = createBrowserRouter([
   {
@@ -41,13 +49,45 @@ const router = createBrowserRouter([
   {
     path: "dashboard",
     element: <Dashboard />,
-     children: [
+    children: [
       {
-        path: "Tenants/",
-        element: <Tenants />,
+        path: "tenants",
+        element: <ManageTenants />,
+      },
+      {
+        path: "",
+        element: <Welcome />,
+      },
+      {
+        path: "agent",
+        element: <Agent />,
+      },
+      {
+        path: "payments",
+        element: <Payments />,
+      },
+      {
+        path: "landlord",
+        element: <Landlord />,
+      },
+      {
+        path: "reports",
+        element: <Reports />,
+      },
+      {
+        path: "manage-invoices",
+        element: <ManageInvoices />,
+      },
+      {
+        path: "manage-property",
+        element: <ManageProperty />,
+      },
+      {
+        path: "caretaker",
+        element: <Caretaker />,
       },
     ],
-  }
+  },
 ]);
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -55,8 +95,3 @@ root.render(
     <RouterProvider router={router} />
   </React.StrictMode>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
