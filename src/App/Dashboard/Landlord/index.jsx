@@ -2,7 +2,7 @@ import React from 'react'
 
 const Landlord = () => {
   return (
-    <div>Landlord</div>
+    <div>Landlord1</div>
   )
 }
 
