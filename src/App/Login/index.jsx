@@ -1,10 +1,12 @@
 import { Button, Stack, TextField, Typography } from "@mui/material";
 import React from "react";
 import { useForm } from "react-hook-form";
+
 import IconButton from "@mui/material/IconButton";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import InputAdornment from "@mui/material/InputAdornment";
+
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import Footer from "../../components/Footer";
@@ -27,7 +29,6 @@ const Login = () => {
   const [showPassword, setShowPassword] = React.useState(false);
   const {
     register,
-    control,
     handleSubmit,
     formState: { errors },
   } = useForm({

@@ -6,11 +6,15 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // import 'mdbootstrap/css/mdb.min.css';
 // import 'mdbootstrap/css/bootstrap.min.css';
 import "mdb-react-ui-kit/dist/css/mdb.min.css";
+
+// import 'mdb-react-ui-kit/dist/css/mdb.min.css';
+
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Contact from "./App/Contact";
 import Login from "./App/Login";
+import Houses from "./App/Houses";
 import About from "./App/About";
 import Register from "./App/Register";
 import Dashboard from "./App/Dashboard";
@@ -28,6 +32,10 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+  },
+  {
+    path: "/Houses",
+    element: <Houses />,
   },
 
   {
