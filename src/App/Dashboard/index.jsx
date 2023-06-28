@@ -103,11 +103,12 @@ export default function Dashboard() {
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
-            sx={{ mr: 2, ...(open && { display: "none" }) }}>
+            sx={{ mr: 2, ...(open && { display: "none" }) }}
+          >
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Welcome Admin
+            Dashboard SUMMARY DASHBOARD
           </Typography>
         </Toolbar>
       </AppBar>
@@ -123,7 +124,8 @@ export default function Dashboard() {
         }}
         variant="persistent"
         anchor="left"
-        open={open}>
+        open={open}
+      >
         <DrawerHeader>
           <Typography sx={{ color: "#ffff", fontSize: "15px" }}>
             Rental Management
@@ -145,10 +147,11 @@ export default function Dashboard() {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-          }}>
+          }}
+        >
           <Avatar
             alt="avatar"
-            src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+            src="https://img.freepik.com/free-vector/home-icon-pin-deal-isolated-white_1284-48167.jpg"
             sx={{
               width: 100,
               height: 100,
@@ -158,7 +161,7 @@ export default function Dashboard() {
             }}
           />
           <Typography sx={{ color: "#ffff" }} align="center">
-            John Tech Kenya
+            GOLDEN MANAGEMENT
           </Typography>
         </Stack>
         <Divider sx={{ color: "#ffff" }} />
