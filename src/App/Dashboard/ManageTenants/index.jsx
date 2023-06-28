@@ -53,8 +53,8 @@ const columns = [
     sortable: false,
     width: 100,
     renderCell: (params) => (
-      <IconButton color="primary" size="small">
-        <DeleteIcon />
+      <IconButton color="red" size="small">
+        <DeleteIcon sx={{ color: "red" }} />
       </IconButton>
     ),
   },
