@@ -1,6 +1,7 @@
 import React from "react";
 import { Stack, Typography, Button, Box, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material/";
 import ApartmentIcon from "@mui/icons-material/Apartment";
+import { Link } from "react-router-dom";
 
 
 function createData(
@@ -59,6 +60,7 @@ const Welcome = () => {
             <Typography align="center">
               Property <br /> 5
             </Typography>
+            <Link to="/dashboard/manage-property">
             <Button
               sx={{
                 marginRight: "auto",
@@ -70,6 +72,7 @@ const Welcome = () => {
             >
               view Properties
             </Button>
+            </Link>
           </Stack>
         </Paper>
         <Paper
@@ -121,6 +124,7 @@ const Welcome = () => {
             <Typography align="center">
               Tenants <br /> 65
             </Typography>
+            <Link to="/dashboard/tenants">
             <Button
               sx={{ marginRight: "auto", marginLeft: "auto" }}
               size="small"
@@ -128,6 +132,7 @@ const Welcome = () => {
             >
               View Tenants
             </Button>
+            </Link>
           </Stack>
         </Paper>
         <Paper
