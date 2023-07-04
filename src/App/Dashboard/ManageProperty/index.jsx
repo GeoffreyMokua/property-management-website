@@ -52,12 +52,57 @@ const ManageProperty = () => {
           Create property
         </Button>
       </Stack>
-      <Stack gap={3}>
+      <Stack
+        gap={3}
+        sx={{ backgroundColor: "#808080", padding: "20px", minHeght: "100%" }}>
+        <Paper
+          sx={{
+            display: "grid",
+            gridTemplateColumns: "2.5fr 1fr 1fr 1.5fr",
+            columnGap: 2,
+            backgroundColor: "primary.main",
+            color: "#fffff",
+            padding: "5px",
+            boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.2)",
+          }}>
+          <Stack>
+            {" "}
+            <Typography
+              sx={{ color: "#ffffff", fontSize: "15px", fontWeight: 700 }}>
+              Property Name
+            </Typography>
+          </Stack>
+          <Stack>
+            <Typography
+              sx={{ color: "#ffffff", fontSize: "15px", fontWeight: 700 }}>
+              Property county
+            </Typography>
+          </Stack>
+          <Stack>
+            <Typography
+              sx={{ color: "#ffffff", fontSize: "15px", fontWeight: 700 }}>
+              Sub County
+            </Typography>
+          </Stack>
+          <Stack>
+            <Typography
+              sx={{
+                color: "#ffffff",
+                fontSize: "15px",
+                fontWeight: 700,
+                marginRight: "auto",
+                marginLeft: "auto",
+              }}>
+              Actions
+            </Typography>
+          </Stack>
+        </Paper>
         {properties
           ?.map((property) => (
             <Paper
               sx={{
                 display: "grid",
+                borderRadius: "5px",
                 gridTemplateColumns: "3fr 1fr 1fr 0.5fr 0.5fr 0.5fr",
                 columnGap: 2,
                 padding: "5px",
