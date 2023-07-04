@@ -28,6 +28,7 @@ import Payments from "./App/Dashboard/Payments";
 import Welcome from "./App/Dashboard/Welcome";
 import Reports from "./App/Dashboard/Reports";
 import AdminProfile from "./App/Dashboard/AdminProfile";
+import SingleProperty from "./App/Dashboard/ManageProperty/SingleProperty";
 
 const router = createBrowserRouter([
   {
@@ -90,6 +91,10 @@ const router = createBrowserRouter([
       {
         path: "manage-property",
         element: <ManageProperty />,
+      },
+      {
+        path: "manage-property/:id",
+        element: <SingleProperty />,
       },
       {
         path: "caretaker",
