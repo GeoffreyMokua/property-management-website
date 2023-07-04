@@ -4,6 +4,7 @@ import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import CssBaseline from "@mui/material/CssBaseline";
 import MuiAppBar from "@mui/material/AppBar";
+import Button from "@mui/material/Button";
 import Toolbar from "@mui/material/Toolbar";
 import Avatar from "@mui/material/Avatar";
 import List from "@mui/material/List";
@@ -96,21 +97,37 @@ export default function Dashboard() {
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open} sx={{ backgroundColor: "#1D267D" }}>
+      <AppBar
+        position="fixed"
+        open={open}
+        sx={{ backgroundColor: "#1D267D", height: "70px",display: "flex" }}>
         <Toolbar>
           <IconButton
             color="inherit"
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
-            sx={{ mr: 2, ...(open && { display: "none" }) }}
-          >
+            sx={{ mr: 2, ...(open && { display: "none" }) }}>
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
             Dashboard SUMMARY DASHBOARD
           </Typography>
+          <Button
+          href="/dashboard"
+          sx={{
+            marginTop: "auto",
+            marginLeft: "auto",
+            marginBottom: "auto",
+            alignSelf: "right",
+            color: "white",
+            backgroundColor: "green",
+          }}
+          variant="outlined">
+          Back to dashboard
+        </Button>
         </Toolbar>
+        
       </AppBar>
       <Drawer
         sx={{
@@ -124,8 +141,7 @@ export default function Dashboard() {
         }}
         variant="persistent"
         anchor="left"
-        open={open}
-      >
+        open={open}>
         <DrawerHeader>
           <Typography sx={{ color: "#ffff", fontSize: "15px" }}>
             Rental Management
@@ -147,8 +163,7 @@ export default function Dashboard() {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-          }}
-        >
+          }}>
           <Avatar
             alt="avatar"
             src="https://img.freepik.com/free-vector/home-icon-pin-deal-isolated-white_1284-48167.jpg"
