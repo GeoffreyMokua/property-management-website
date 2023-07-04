@@ -24,6 +24,7 @@ import ListItemText from "@mui/material/ListItemText";
 import SummarizeIcon from "@mui/icons-material/Summarize";
 import PaymentIcon from "@mui/icons-material/Payment";
 import PublicIcon from "@mui/icons-material/Public";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { Outlet } from "react-router";
 import { Stack } from "react-bootstrap";
 
@@ -34,6 +35,7 @@ const supportAgentIcon = <SupportAgentIcon />;
 const tenantsIcon = <GroupsIcon />;
 const invoiceIcon = <ReceiptIcon />;
 const appartmentIcon = <ApartmentIcon />;
+const accountCircleIcon = <AccountCircleIcon />;
 const summarizeIcon = <SummarizeIcon />;
 const publicIcon = <PublicIcon />;
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
@@ -180,8 +182,9 @@ export default function Dashboard() {
               icon: appartmentIcon,
             },
             { text: "Reports", path: "reports", icon: summarizeIcon },
-            { text: "caretaker", path: "caretaker", icon: supportAgentIcon },
-            { text: "landlord", path: "landlord", icon: publicIcon },
+            { text: "Caretaker", path: "caretaker", icon: supportAgentIcon },
+            { text: "Landlord", path: "landlord", icon: publicIcon },
+            { text: "My Account", path: "admin-profile", icon: accountCircleIcon },
           ].map(({ text, path, icon }, index) => (
             <ListItem key={text} disablePadding>
               <ListItemButton href={`/dashboard/${path}`}>

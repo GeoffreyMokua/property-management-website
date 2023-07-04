@@ -147,6 +147,7 @@ const ManageProperty = () => {
       <Typography align="center" sx={{ margin: "10px", fontWeight: "bold" }}>
         PROPERTY LISTING
       </Typography>
+
       <DataGrid
         rows={rows}
         columns={columns}

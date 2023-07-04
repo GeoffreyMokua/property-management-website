@@ -27,6 +27,7 @@ import Agent from "./App/Dashboard/Agent";
 import Payments from "./App/Dashboard/Payments";
 import Welcome from "./App/Dashboard/Welcome";
 import Reports from "./App/Dashboard/Reports";
+import AdminProfile from "./App/Dashboard/AdminProfile";
 
 const router = createBrowserRouter([
   {
@@ -93,6 +94,10 @@ const router = createBrowserRouter([
       {
         path: "caretaker",
         element: <Caretaker />,
+      },
+      {
+        path: "admin-profile",
+        element: <AdminProfile />
       },
     ],
   },
