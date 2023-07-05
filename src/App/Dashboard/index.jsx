@@ -26,7 +26,7 @@ import SummarizeIcon from "@mui/icons-material/Summarize";
 import PaymentIcon from "@mui/icons-material/Payment";
 import PublicIcon from "@mui/icons-material/Public";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import { Outlet } from "react-router";
+import { Outlet } from "react-router-dom";
 import { Stack } from "react-bootstrap";
 
 const drawerWidth = 240;
