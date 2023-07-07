@@ -48,13 +48,15 @@ const ManageProperty = () => {
           sx={{ textTransform: "capitalize", borderRadius: "5px" }}
           elevation={0}
           size="small"
-          variant="contained">
+          variant="contained"
+        >
           Create property
         </Button>
       </Stack>
       <Stack
         gap={3}
-        sx={{ backgroundColor: "#808080", padding: "20px", minHeght: "100%" }}>
+        sx={{ backgroundColor: "#808080", padding: "20px", minHeght: "100%" }}
+      >
         <Paper
           sx={{
             display: "grid",
@@ -64,23 +66,27 @@ const ManageProperty = () => {
             color: "#fffff",
             padding: "5px",
             boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.2)",
-          }}>
+          }}
+        >
           <Stack>
             {" "}
             <Typography
-              sx={{ color: "#ffffff", fontSize: "15px", fontWeight: 700 }}>
+              sx={{ color: "#ffffff", fontSize: "15px", fontWeight: 700 }}
+            >
               Property Name
             </Typography>
           </Stack>
           <Stack>
             <Typography
-              sx={{ color: "#ffffff", fontSize: "15px", fontWeight: 700 }}>
+              sx={{ color: "#ffffff", fontSize: "15px", fontWeight: 700 }}
+            >
               Property county
             </Typography>
           </Stack>
           <Stack>
             <Typography
-              sx={{ color: "#ffffff", fontSize: "15px", fontWeight: 700 }}>
+              sx={{ color: "#ffffff", fontSize: "15px", fontWeight: 700 }}
+            >
               Sub County
             </Typography>
           </Stack>
@@ -92,7 +98,8 @@ const ManageProperty = () => {
                 fontWeight: 700,
                 marginRight: "auto",
                 marginLeft: "auto",
-              }}>
+              }}
+            >
               Actions
             </Typography>
           </Stack>
@@ -108,7 +115,8 @@ const ManageProperty = () => {
                 padding: "5px",
                 boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.2)",
               }}
-              key={property.id}>
+              key={property.id}
+            >
               <Stack sx={{ marginTop: "auto", marginBottom: "auto" }}>
                 <Typography sx={{ fontSize: "22px", fontWeight: 600 }}>
                   {property.name}
@@ -128,7 +136,8 @@ const ManageProperty = () => {
                 <IconButton
                   sx={{ height: "40px", width: "40px" }}
                   aria-label="delete"
-                  color="primary">
+                  color="primary"
+                >
                   <Link to={`${property.id}`}>
                     <VisibilityIcon />
                   </Link>
@@ -138,7 +147,8 @@ const ManageProperty = () => {
                 <IconButton
                   sx={{ height: "40px", width: "40px" }}
                   aria-label="delete"
-                  color="primary">
+                  color="primary"
+                >
                   <EditIcon />
                 </IconButton>
               </Stack>
@@ -147,7 +157,8 @@ const ManageProperty = () => {
                   onClick={() => handleDelete(property.id)}
                   sx={{ height: "40px", width: "40px" }}
                   aria-label="delete"
-                  color="error">
+                  color="error"
+                >
                   <DeleteIcon color="error" />
                 </IconButton>
               </Stack>

@@ -26,11 +26,9 @@ const SingleProperty = () => {
             onClick={() => navigate("/dashboard/manage-property")}
             sx={{ cursor: "pointer" }}
           />{" "}
-          Back to properties {params.id}
+          Back to properties {typeof params.id}
         </Typography>
-        <Stack>
-          {/* s */}
-        </Stack>
+        <Stack>{/* s */}</Stack>
       </Stack>
     </Stack>
   );
