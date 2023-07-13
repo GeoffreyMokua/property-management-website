@@ -1,4 +1,5 @@
 import * as React from "react";
+
 import Button from "@mui/material/Button";
 
 import TextField from "@mui/material/TextField";
@@ -12,8 +13,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 const schema = yup.object({
-  name: yup.string().required("Name is required"),
-  email: yup.string().required("Email is required"),
+  firstName: yup.string().required(" First name is required"),
+  lastName: yup.string().required(" Last name is required"),
+  email: yup.string().required("email is required"),
+  pNumber: yup.string().required("Phone number county is required"),
 });
 
 export default function LandlordModal({ open, handleClose, handleUpdate }) {
@@ -27,14 +30,19 @@ export default function LandlordModal({ open, handleClose, handleUpdate }) {
   });
   const onSubmit = async (data) => {
     try {
-      const res = await fetch("", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: data.name,
-          email: data.email,
-        }),
-      });
+      const res = await fetch(
+        "https://property-system-node.onrender.com/landlords",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            first_name: data.Firstname,
+            last_name: data.LastName,
+            email: data.email,
+            p_number: data.pNumber,
+          }),
+        }
+      );
 
       const responseJson = await res.json();
       reset();
@@ -46,78 +54,104 @@ export default function LandlordModal({ open, handleClose, handleUpdate }) {
   };
 
   return (
-    <Stack>
-      <div>
-        <Dialog
-          open={open}
-          onClose={handleClose}
-          PaperProps={{
-            sx: {
-              width: "100%",
-            },
-          }}
+    <div>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        PaperProps={{
+          sx: {
+            width: "100%",
+          },
+        }}
+      >
+        <Stack
+          gap={3}
+          sx={{ padding: "20px" }}
+          component="form"
+          onSubmit={handleSubmit(onSubmit)}
         >
           <Stack
-            gap={3}
-            sx={{ padding: "20px" }}
-            component="form"
-            onSubmit={handleSubmit(onSubmit)}
+            sx={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              columnGap: "15px",
+            }}
           >
-            <Stack
-              sx={{
-                display: "grid",
-                gridTemplateColumns: "1fr 1fr",
-                columnGap: "15px",
-              }}
-            >
-              <Stack gap={1}>
-                <Typography>Name</Typography>
-                <TextField
-                  {...register("name")}
-                  placeholder="Enter name of the Landlord"
-                  variant="outlined"
-                  error={!!errors.name}
-                  helperText={errors.name?.message}
-                />
-              </Stack>
-              <Stack gap={1}>
-                <Typography>Email</Typography>
-                <TextField
-                  placeholder="Enter email of the Landlord"
-                  variant="outlined"
-                  {...register("email")}
-                  error={!!errors.email}
-                  helperText={errors.email?.message}
-                />
-              </Stack>
+            <Stack gap={1}>
+              <Typography> First Name</Typography>
+              <TextField
+                {...register("firstName")}
+                placeholder="Enter first name"
+                variant="outlined"
+                error={!!errors.firstName}
+                helperText={errors.firstName?.message}
+              />
             </Stack>
-            <Stack
-              sx={{
-                display: "grid",
-                gridTemplateColumns: "1fr 1fr 1fr",
-                columnGap: "15px",
-              }}
-            ></Stack>
-            <Button
-              variant="contained"
-              size="small"
-              type="submit"
-              sx={{ textTransform: "capitalize" }}
-            >
-              create
-            </Button>
+            <Stack gap={1}>
+              <Typography> Last Name</Typography>
+              <TextField
+                {...register("lastName")}
+                placeholder="Enter last name"
+                variant="outlined"
+                error={!!errors.lastName}
+                helperText={errors.lastName?.message}
+              />
+            </Stack>
+            <Stack gap={1}>
+              <Typography>Email</Typography>
+              <TextField
+                placeholder="Enter email"
+                variant="outlined"
+                {...register("email")}
+                error={!!errors.email}
+                helperText={errors.email?.message}
+              />
+            </Stack>
           </Stack>
-          <DialogActions>
-            <Button
-              sx={{ textTransform: "capitalize" }}
-              variant="outlined"
-              onClick={handleClose}
-            >
-              Back
-            </Button>
-          </DialogActions>
-        </Dialog>
-      </div>
-    </Stack>
+          <Stack
+            sx={{
+              display: "grid",
+              gridTemplateColumns: "1fr",
+              columnGap: "15px",
+            }}
+          >
+            <Stack gap={1}>
+              <Typography>Phone Number</Typography>
+              <TextField
+                placeholder="Enter phone number"
+                {...register("pNumber")}
+                variant="outlined"
+                error={!!errors.pNumber}
+                helperText={errors.pNumber?.message}
+              />
+            </Stack>
+          </Stack>
+          <Stack
+            sx={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr 1fr",
+              columnGap: "15px",
+            }}
+          ></Stack>
+          <Button
+            variant="contained"
+            size="small"
+            type="submit"
+            sx={{ textTransform: "capitalize" }}
+          >
+            create
+          </Button>
+        </Stack>
+        <DialogActions>
+          <Button
+            sx={{ textTransform: "capitalize" }}
+            variant="outlined"
+            onClick={handleClose}
+          >
+            Back
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </div>
   );
 }
