@@ -10,7 +10,7 @@ import InputAdornment from "@mui/material/InputAdornment";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import Footer from "../../components/Footer";
-import axios from "axios";
+// import axios from "axios";
 import Header from "../../components/Header";
 import { useNavigate } from "react-router-dom";
 
@@ -37,25 +37,31 @@ const Login = () => {
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
-  const handleMouseDownPassword = (
-    event: React.MouseEvent<HTMLButtonElement>
-  ) => {
+  const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
   const navigate = useNavigate();
   const onSubmit = (data) => {
-    return fetch("http://localhost:3000/tenant_login", {
+    return fetch(`${process.env.REACT_APP_BASE_URL}/landlord_login`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
       },
       body: JSON.stringify(data),
     })
-      .then((res) => res.json())
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        throw new Error("Network response was not ok.");
+      })
       .then((data) => {
-        localStorage.setItem("token",`${data.jwt}`);
-        localStorage.setItem("tenant_id",`${data.tenant.id}`);
+        localStorage.setItem("token", `${data.jwt}`);
+        localStorage.setItem("landlord_id", `${data.landlord.id}`);
         navigate("/dashboard");
+      })
+      .catch((error) => {
+        console.error("Error fetching data: ", error);
       });
   };
 
@@ -68,15 +74,17 @@ const Login = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-      }}>
+      }}
+    >
       <Header />
       <Typography sx={{ marginBottom: "20px", marginTop: "80px" }} variant="h5">
-        Welcome back Tenant!!{" "}
+        Welcome back Landlord!!{" "}
         <Typography
           sx={{ fontWeight: "700" }}
           variant="h4"
           color="secondary.main"
-          component="span">
+          component="span"
+        >
           LOGIN
         </Typography>
       </Typography>
@@ -98,7 +106,8 @@ const Login = () => {
             flexDirection: "column",
             marginBottom: "40px",
           },
-        }}>
+        }}
+      >
         <Stack sx={{ width: "100%" }}>
           <TextField
             {...register("email")}
@@ -122,7 +131,8 @@ const Login = () => {
                     aria-label="toggle password visibility"
                     onClick={handleClickShowPassword}
                     onMouseDown={handleMouseDownPassword}
-                    edge="end">
+                    edge="end"
+                  >
                     {showPassword ? <VisibilityOff /> : <Visibility />}
                   </IconButton>
                 </InputAdornment>
@@ -137,7 +147,8 @@ const Login = () => {
             sx={{ paddingY: "10px" }}
             size="large"
             type="submit"
-            variant="contained">
+            variant="contained"
+          >
             LOGIN
           </Button>
         </Stack>
@@ -145,7 +156,8 @@ const Login = () => {
           component="span"
           sx={{ textDecoration: "underline", cursor: "pointer" }}
           variant="body1"
-          color="primary.main">
+          color="primary.main"
+        >
           Forgot password?
         </Typography>
         <Typography sx={{ alignSelf: "end" }} variant="body1" color="grey">
@@ -155,7 +167,8 @@ const Login = () => {
             sx={{ cursor: "pointer", textDecoration: "underline" }}
             color="primary.main"
             component="span"
-            variant="body2">
+            variant="body2"
+          >
             Register
           </Typography>
         </Typography>

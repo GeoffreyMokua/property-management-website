@@ -1,8 +1,5 @@
 import { Button, Stack, TextField, Typography } from "@mui/material";
 import React from "react";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -19,9 +16,9 @@ const schema = yup.object().shape({
     .string()
     .email("Enter a valid email")
     .required("Email is required**"),
-  phoneNumber: yup.number().integer().required("Phone number is required**"),
-  password: yup.string().required("Password is required"),
-  date: yup.date().required("Date is a required field"),
+  pNumber: yup.number().integer().required("Phone number is required**"),
+  pasword: yup.string().required("Password is required"),
+  username: yup.string().required("Username is a required field"),
 });
 
 const Register = () => {
@@ -46,15 +43,17 @@ const Register = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-      }}>
+      }}
+    >
       <Header />
       <Typography sx={{ marginBottom: "20px", marginTop: "80px" }} variant="h5">
-        Welcome New Tenant{" "}
+        Welcome New Landlord{" "}
         <Typography
           sx={{ fontWeight: "700" }}
           variant="h4"
           color="secondary.main"
-          component="span">
+          component="span"
+        >
           Create Account
         </Typography>
       </Typography>
@@ -75,7 +74,8 @@ const Register = () => {
             flexDirection: "column",
             marginBottom: "40px",
           },
-        }}>
+        }}
+      >
         <Stack>
           <TextField
             sx={{ width: "100%" }}
@@ -106,45 +106,35 @@ const Register = () => {
         </Stack>
         <Stack>
           <Controller
-            name="phoneNumber"
+            name="pNumber"
             control={control}
             render={({ field }) => (
               <MuiTelInput
                 {...field}
                 label="Phone Number"
-                error={!!errors.phoneNumber}
-                helperText={errors.phoneNumber?.message}
+                error={!!errors.pNumber}
+                helperText={errors.pNumber?.message}
               />
             )}
           />
         </Stack>
         <Stack>
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <Controller
-              name="date"
-              control={control}
-              render={({ field }) => (
-                <DatePicker
-                  {...field}
-                  slotProps={{
-                    textField: {
-                      error: !!errors.date,
-                      helperText: errors.date?.message,
-                    },
-                  }}
-                  label="Move in date"
-                />
-              )}
-            />
-          </LocalizationProvider>
+          <TextField
+            {...register("username")}
+            variant="outlined"
+            label="Username"
+            error={!!errors.username}
+            helperText={errors.username?.message}
+          />
         </Stack>
+
         <Stack>
           <TextField
-            {...register("password")}
+            {...register("pasword")}
             variant="outlined"
             label="Password"
-            error={!!errors.password}
-            helperText={errors.password?.message}
+            error={!!errors.pasword}
+            helperText={errors.pasword?.message}
           />
         </Stack>
         <Stack sx={{ gridColumn: "span 2" }}>
@@ -160,7 +150,8 @@ const Register = () => {
             sx={{ cursor: "pointer", textDecoration: "underline" }}
             color="primary.main"
             component="span"
-            variant="body2">
+            variant="body2"
+          >
             Log in
           </Typography>
         </Typography>

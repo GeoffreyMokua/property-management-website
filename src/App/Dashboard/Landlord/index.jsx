@@ -19,7 +19,7 @@ const Landlord = () => {
   };
 
   const handleDelete = async (id) => {
-    await fetch("https://property-system-node.onrender.com/landlords/" + id, {
+    await fetch(`${process.env.BASE_URL}/landlords/${id}`, {
       method: "DELETE",
     });
 

@@ -16,25 +16,25 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 
-interface Props {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
-  window?: () => Window;
-}
+// interface Props {
+//   /**
+//    * Injected by the documentation to work in an iframe.
+//    * You won't need it on your project.
+//    */
+//   window?: () => Window;
+// }
 
 const drawerWidth = 240;
 const navItems = [
   { name: "Home", path: "/" },
-  { name: "Developments", path: "houses"},
+  { name: "Developments", path: "houses" },
   { name: "About", path: "/about" },
   { name: "Contact", path: "/contact" },
   { name: "Login", path: "/login" },
-  { name: "New Tenant", path: "/register" },
+  { name: "New Landlord", path: "/register" },
 ];
 
-export default function Header(props: Props) {
+export default function Header(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const navigate = useNavigate();
@@ -50,7 +50,11 @@ export default function Header(props: Props) {
       <Divider />
       <List>
         {navItems.map((item) => (
-          <ListItem  onClick={() => navigate(item.path)} key={item.name} disablePadding>
+          <ListItem
+            onClick={() => navigate(item.path)}
+            key={item.name}
+            disablePadding
+          >
             <ListItemButton sx={{ textAlign: "center" }}>
               <ListItemText primary={item.name} />
             </ListItemButton>
@@ -73,21 +77,25 @@ export default function Header(props: Props) {
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: "none" } }}>
+            sx={{ mr: 2, display: { sm: "none" } }}
+          >
             <MenuIcon />
           </IconButton>
           <Typography
             variant="h6"
             component="div"
-            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}>
-            <HouseIcon sx={{color: "orange",fontSize: "50PX"}}/> SMART | VIEW
+            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+          >
+            <HouseIcon sx={{ color: "orange", fontSize: "50PX" }} /> SMART |
+            VIEW
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navItems.map((item) => (
               <Button
                 onClick={() => navigate(item.path)}
                 key={item.path}
-                sx={{ color: "#fff" }}>
+                sx={{ color: "#fff" }}
+              >
                 {item.name}
               </Button>
             ))}
@@ -109,7 +117,8 @@ export default function Header(props: Props) {
               boxSizing: "border-box",
               width: drawerWidth,
             },
-          }}>
+          }}
+        >
           {drawer}
         </Drawer>
       </Box>
