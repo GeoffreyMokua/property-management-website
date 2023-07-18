@@ -29,7 +29,7 @@ import Welcome from "./App/Dashboard/Welcome";
 import Reports from "./App/Dashboard/Reports";
 import AdminProfile from "./App/Dashboard/AdminProfile";
 import SingleProperty from "./App/Dashboard/ManageProperty/SingleProperty";
-
+import LandlordDashboard from "./App/LandlordDashboard";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -55,6 +55,10 @@ const router = createBrowserRouter([
   {
     path: "register",
     element: <Register />,
+  },
+  {
+    path: "landlord_dashboard",
+    element: <LandlordDashboard />,
   },
   {
     path: "dashboard",
