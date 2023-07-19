@@ -83,12 +83,23 @@ const Login = () => {
       .then((res) => {
         if (res.ok) {
           return res.json();
-          
+        } else {
+          return res.json().then((data) => {
+            console.log("the data", data);
+            setOpen1(false);
+            setErrorMessage(data);
+            setError(true);
+
+            // Handle the error here, you can log it or display an error message.
+            console.error("Response was not ok. Status:", res.status);
+
+            throw new Error("Failed to process the request.");
+          });
         }
       })
       .then((data) => {
         localStorage.setItem("token", data.token);
-        localStorage.setItem("landlord_id", JSON.stringify(data.landlord));
+        localStorage.setItem("landlord", JSON.stringify(data.landlord));
         handleClickOpen();
         handleNotification();
       })
