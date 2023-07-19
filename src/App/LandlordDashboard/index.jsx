@@ -2,14 +2,25 @@ import React from "react";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import ErrorIcon from "@mui/icons-material/Error";
+import Button from "@mui/material/Button";
+import { useNavigate } from "react-router-dom";
 
 const LandlordDashboard = () => {
   const token = localStorage.getItem("token");
-  const landlord = localStorage.getItem("landlord_id");
-
+  const landlord = localStorage.getItem("landlord");
+  const navigate = useNavigate();
   if (token) {
     return (
       <div>
+        <Button
+          sx={{ position: "absolute", right: 5, top: 5 }}
+          variant="contained"
+          onClick={() => {
+            localStorage.clear();
+            navigate("/login");
+          }}>
+          Logout
+        </Button>
         <br></br>
         {landlord}
       </div>
