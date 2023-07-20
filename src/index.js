@@ -29,7 +29,9 @@ import Welcome from "./App/Dashboard/Welcome";
 import Reports from "./App/Dashboard/Reports";
 import AdminProfile from "./App/Dashboard/AdminProfile";
 import SingleProperty from "./App/Dashboard/ManageProperty/SingleProperty";
-import LandlordDashboard from "./App/LandlordDashboard";
+import SingleLandlord from "./App/Dashboard/Landlord/SingleLandlord";
+import ForgotPassword from "./App/ForgotPassword";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -38,6 +40,10 @@ const router = createBrowserRouter([
   {
     path: "/Houses",
     element: <Houses />,
+  },
+  {
+    path: "/ForgotPassword",
+    element: <ForgotPassword />,
   },
 
   {
@@ -55,10 +61,6 @@ const router = createBrowserRouter([
   {
     path: "register",
     element: <Register />,
-  },
-  {
-    path: "landlord_dashboard",
-    element: <LandlordDashboard />,
   },
   {
     path: "dashboard",
@@ -99,6 +101,10 @@ const router = createBrowserRouter([
       {
         path: "manage-property/:id",
         element: <SingleProperty />,
+      },
+      {
+        path: "landlord/:id",
+        element: <SingleLandlord />,
       },
       {
         path: "caretaker",

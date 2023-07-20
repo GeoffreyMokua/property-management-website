@@ -215,6 +215,7 @@ const Login = () => {
           </Button>
         </Stack>
         <Typography
+          onClick={() => navigate("/ForgotPassword")}
           component="span"
           sx={{ textDecoration: "underline", cursor: "pointer" }}
           variant="body1"
