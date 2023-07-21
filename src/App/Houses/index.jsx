@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import "./Houses.css";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
-import House from "../House"
+import House from "../House";
 import { Row } from "react-bootstrap";
 
 function Houses() {
@@ -47,6 +47,5 @@ function Houses() {
     </>
   );
 }
-
 
 export default Houses;

@@ -37,7 +37,14 @@ function Banner() {
           </p>
           <div>
             <Link to="/houses">
-              <Button variant="contained" className="button-app">
+              <Button
+                sx={{
+                  backgroundColor: "green",
+                  "&.hover": { backgroundColor: "yellow" },
+                }}
+                variant="contained"
+                className="button-app"
+              >
                 Discover More <ArrowForwardIosSharp />
               </Button>
             </Link>

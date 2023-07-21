@@ -7,7 +7,7 @@ const ForgotPassword = () => {
   return (
     <>
       <Header />
-      <div className="container">
+      <div className="containerk">
         <div
           class="card text-center"
           style={{
