@@ -1,113 +1,149 @@
-import React from "react";
-import Footer from "../../components/Footer";
-import Header from "../../components/Header";
+import React, { Component } from "react";
+import axios from "axios";
+import TextField from "@material-ui/core/TextField";
+// import Footer from "../../components/Footer";
+// import Header from "../../components/Header";
 
-const Contact = () => {
-  return (
-    <>
-      <Header />
+export default class Contact extends Component {
+  state = {
+    name: "",
+    message: "",
+    email: "",
+    subject: "",
+    sent: false,
+    buttonText: "Send Message",
+    emailError: false,
+  };
 
-      <section class="mb-4">
-        <p class="text-center w-responsive mx-auto mb-5">
-          Tired Of Self-Management? Schedule a Consult Today.
-        </p>
-        <h2 class="h1-responsive font-weight-bold text-center my-4">
-          Contact us
-        </h2>
+  resetForm = () => {
+    this.setState({
+      name: "",
+      message: "",
+      email: "",
+      subject: "",
+      buttonText: "Message Sent",
+    });
 
-        <p class="text-center w-responsive mx-auto mb-5">
-          Do you have any questions? Please do not hesitate to contact us
-          directly. Our team will come back to you within a matter of hours to
-          help you.
-        </p>
+    setTimeout(() => {
+      this.setState({ sent: false });
+    }, 3000);
+  };
 
-        <div class="row">
-          <div class="col-md-9 mb-md-0 mb-5">
-            <form
-              id="contact-form"
-              name="contact-form"
-              action="mail.php"
-              method="POST"
-            >
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="md-form mb-0">
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      class="form-control"
-                    ></input>
-                    <label for="name" class="">
-                      Your name
-                    </label>
-                  </div>
-                </div>
+  handleChangeEmail(e) {
+    if (
+      !e.target.value.match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      )
+    ) {
+      this.setState({
+        email: e.target.value,
+      });
+      this.setState({ emailError: true });
 
-                <div class="col-md-6">
-                  <div class="md-form mb-0">
-                    <input
-                      type="text"
-                      id="email"
-                      name="email"
-                      class="form-control"
-                    ></input>
-                    <label for="email" class="">
-                      Your email
-                    </label>
-                  </div>
-                </div>
-              </div>
+      if (this.state.email === "") {
+        // check if the input is empty
+        this.setState({ emailError: false });
+      }
+    } else {
+      this.setState({ email: e.target.value, emailError: false });
+    }
+  }
 
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="md-form mb-0">
-                    <input
-                      type="text"
-                      id="subject"
-                      name="subject"
-                      class="form-control"
-                    ></input>
-                    <label for="subject" class="">
-                      Subject
-                    </label>
-                  </div>
-                </div>
-              </div>
+  formSubmit = async (e) => {
+    e.preventDefault();
+    this.setState({
+      buttonText: "...sending",
+    });
 
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="md-form">
-                    <textarea
-                      type="text"
-                      id="message"
-                      name="message"
-                      rows="2"
-                      class="form-control md-textarea"
-                    ></textarea>
-                    <label for="message">Your message</label>
-                  </div>
-                </div>
-              </div>
-            </form>
-
-            <div class="text-center text-md-left">
-              <a
-                class="btn btn-primary"
-                onclick="document.getElementById('contact-form').submit();"
-              >
-                Send
-              </a>
-            </div>
-
-            <div class="status"></div>
+    let data = {
+      name: this.state.name,
+      email: this.state.email,
+      message: this.state.message,
+      subject: this.state.subject,
+    };
+    try {
+      await axios.post("BACKEND_URL", data);
+      this.setState({ sent: true });
+      this.resetForm();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  render() {
+    return (
+      <>
+        <form
+          className="contact-form"
+          onSubmit={(e) => this.formSubmit(e)}
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <TextField
+            id="outlined-basic"
+            placeholder="Enter your name"
+            label="Name"
+            variant="outlined"
+            value={this.state.name}
+            onChange={(e) => this.setState({ name: e.target.value })}
+            required
+            type="text"
+          />
+          <br />
+          <br />
+          <br />
+          <TextField
+            id="outlined-basic"
+            label="Email"
+            placeholder="Enter email address"
+            variant="outlined"
+            value={this.state.email}
+            onChange={(e) => this.handleChangeEmail(e)}
+            error={this.state.emailError}
+            required
+            type="email"
+          />
+          <br />
+          <br />
+          <br />
+          <TextField
+            id="outlined-basic"
+            placeholder="Enter Subject"
+            label="Subject"
+            variant="outlined"
+            value={this.state.subject}
+            onChange={(e) => this.setState({ subject: e.target.value })}
+            required
+          />
+          <br />
+          <br />
+          <br />
+          <TextField
+            id="standard-multiline-flexible"
+            label="Message"
+            placeholder="Enter Message"
+            variant="outlined"
+            multiline
+            value={this.state.message}
+            onChange={(e) => this.setState({ message: e.target.value })}
+            required
+            type="text"
+          />
+          <br />
+          <br />
+          <br />
+          <div
+            className="button--container"
+            sx={{ margin: "0 auto", display: "flex" }}
+          >
+            <button type="submit" className="button button-primary">
+              {this.state.buttonText}
+            </button>
           </div>
-        </div>
-      </section>
-
-      <Footer />
-    </>
-  );
-};
-
-export default Contact;
+        </form>
+      </>
+    );
+  }
+}
