@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
 import TextField from "@material-ui/core/TextField";
-// import Footer from "../../components/Footer";
-// import Header from "../../components/Header";
+import { Button, Stack } from "@mui/material";
+import Footer from "../../components/Footer";
+import Header from "../../components/Header";
 
 export default class Contact extends Component {
   state = {
@@ -58,11 +59,14 @@ export default class Contact extends Component {
     let data = {
       name: this.state.name,
       email: this.state.email,
-      message: this.state.message,
       subject: this.state.subject,
+      message: this.state.message,
     };
     try {
-      await axios.post("BACKEND_URL", data);
+      await axios.post(
+        "https://property-system-node.onrender.com/contact",
+        data
+      );
       this.setState({ sent: true });
       this.resetForm();
     } catch (error) {
@@ -71,7 +75,17 @@ export default class Contact extends Component {
   };
   render() {
     return (
-      <>
+      <Stack
+        sx={{
+          minHeight: "100vh",
+          width: "100%",
+          flexGrow: 1,
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Header />
         <form
           className="contact-form"
           onSubmit={(e) => this.formSubmit(e)}
@@ -134,16 +148,23 @@ export default class Contact extends Component {
           <br />
           <br />
           <br />
-          <div
-            className="button--container"
-            sx={{ margin: "0 auto", display: "flex" }}
+          <Stack
+            sx={{
+              margin: "0 auto",
+              display: "flex",
+              width: "100px",
+              backgroundColor: "#064635",
+            }}
           >
-            <button type="submit" className="button button-primary">
-              {this.state.buttonText}
-            </button>
-          </div>
+            <div className="button--container">
+              <Button type="submit" className="button button-primary">
+                {this.state.buttonText}
+              </Button>
+            </div>
+          </Stack>
         </form>
-      </>
+        <Footer />
+      </Stack>
     );
   }
 }
