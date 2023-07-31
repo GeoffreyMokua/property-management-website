@@ -77,7 +77,7 @@ export default class Contact extends Component {
     return (
       <Stack
         sx={{
-          minHeight: "100vh",
+          height: "130vh",
           width: "100%",
           flexGrow: 1,
           display: "flex",
@@ -86,15 +86,7 @@ export default class Contact extends Component {
         }}
       >
         <Header />
-        <form
-          className="contact-form"
-          onSubmit={(e) => this.formSubmit(e)}
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
+        <form className="contact-form" onSubmit={(e) => this.formSubmit(e)}>
           <TextField
             id="outlined-basic"
             placeholder="Enter your name"
