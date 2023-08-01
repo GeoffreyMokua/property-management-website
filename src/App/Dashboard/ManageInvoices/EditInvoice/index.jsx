@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const EditInvoice = () => {
   const { id } = useParams();
-  const history = useHistory();
+  const navigate = useNavigate();
   const [invoice, setInvoice] = useState({
     invoiceNumber: "",
     dueDate: "",
@@ -48,7 +48,7 @@ const EditInvoice = () => {
         // Handle success response
         setLoading(false);
         alert("Invoice updated successfully!");
-        history.push("/invoices");
+        navigate("/invoices");
       })
       .catch((error) => {
         // Handle error response

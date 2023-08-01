@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const NewInvoice = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const [invoice, setInvoice] = useState({
     invoiceNumber: "",
     dueDate: "",
@@ -32,7 +32,7 @@ const NewInvoice = () => {
         // Handle success response
         setLoading(false);
         alert("Invoice created successfully!");
-        history.push("/invoices");
+        navigate("/invoices");
       })
       .catch((error) => {
         // Handle error response
