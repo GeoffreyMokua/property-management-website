@@ -102,34 +102,36 @@ export default function Dashboard() {
       <AppBar
         position="fixed"
         open={open}
-        sx={{ backgroundColor: "#1D267D", height: "70px",display: "flex" }}>
+        sx={{ backgroundColor: "#1D267D", height: "70px", display: "flex" }}
+      >
         <Toolbar>
           <IconButton
             color="inherit"
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
-            sx={{ mr: 2, ...(open && { display: "none" }) }}>
+            sx={{ mr: 2, ...(open && { display: "none" }) }}
+          >
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
             Dashboard SUMMARY DASHBOARD
           </Typography>
           <Button
-          href="/dashboard"
-          sx={{
-            marginTop: "auto",
-            marginLeft: "auto",
-            marginBottom: "auto",
-            alignSelf: "right",
-            color: "white",
-            backgroundColor: "green",
-          }}
-          variant="outlined">
-          Back to dashboard
-        </Button>
+            href="/dashboard"
+            sx={{
+              marginTop: "auto",
+              marginLeft: "auto",
+              marginBottom: "auto",
+              alignSelf: "right",
+              color: "white",
+              backgroundColor: "green",
+            }}
+            variant="outlined"
+          >
+            Back to dashboard
+          </Button>
         </Toolbar>
-        
       </AppBar>
       <Drawer
         sx={{
@@ -143,7 +145,8 @@ export default function Dashboard() {
         }}
         variant="persistent"
         anchor="left"
-        open={open}>
+        open={open}
+      >
         <DrawerHeader>
           <Typography sx={{ color: "#ffff", fontSize: "15px" }}>
             Rental Management
@@ -165,7 +168,8 @@ export default function Dashboard() {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-          }}>
+          }}
+        >
           <Avatar
             alt="avatar"
             src="https://img.freepik.com/free-vector/home-icon-pin-deal-isolated-white_1284-48167.jpg"
@@ -184,7 +188,11 @@ export default function Dashboard() {
         <Divider sx={{ color: "#ffff" }} />
         <List>
           {[
-            { text: "Payments", path: "payments", icon: paymentIcon },
+            {
+              text: "Manage Payments",
+              path: "manage-payments",
+              icon: paymentIcon,
+            },
             {
               text: "Manage Invoices",
               path: "manage-invoices",
@@ -199,7 +207,11 @@ export default function Dashboard() {
             { text: "Reports", path: "reports", icon: summarizeIcon },
             { text: "Caretaker", path: "caretaker", icon: supportAgentIcon },
             { text: "Landlord", path: "landlord", icon: publicIcon },
-            { text: "My Account", path: "admin-profile", icon: accountCircleIcon },
+            {
+              text: "My Account",
+              path: "admin-profile",
+              icon: accountCircleIcon,
+            },
           ].map(({ text, path, icon }, index) => (
             <ListItem key={text} disablePadding>
               <ListItemButton href={`/dashboard/${path}`}>

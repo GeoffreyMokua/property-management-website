@@ -24,7 +24,7 @@ import ManageInvoices from "./App/Dashboard/ManageInvoices";
 import Landlord from "./App/Dashboard/Landlord";
 import Caretaker from "./App/Dashboard/Caretaker";
 import Agent from "./App/Dashboard/Agent";
-import Payments from "./App/Dashboard/Payments";
+import ManagePayments from "./App/Dashboard/ManagePayments";
 import Welcome from "./App/Dashboard/Welcome";
 import Reports from "./App/Dashboard/Reports";
 import AdminProfile from "./App/Dashboard/AdminProfile";
@@ -79,8 +79,8 @@ const router = createBrowserRouter([
         element: <Agent />,
       },
       {
-        path: "payments",
-        element: <Payments />,
+        path: "manage-payments",
+        element: <ManagePayments />,
       },
       {
         path: "landlord",
