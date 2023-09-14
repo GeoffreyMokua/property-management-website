@@ -1,54 +1,19 @@
-import React from "react";
-import {
-  Container,
-  Paper,
-  Table,
-  TableContainer,
-  TableHead,
-  TableRow,
-  TableCell,
-  TableBody,
-  Typography,
-} from "@mui/material";
-// import InvoiceDetails from "./InvoiceDetails";
-// import InvoiceList from "./InvoiceList";
-// import NewInvoice from "./NewInvoice";
+import React, { Component } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./Invoice.css";
+import Container from "react-bootstrap/Container";
+import InvoiceForm from "./InvoiceForm";
 
-const ManageInvoices = ({ invoiceData }) => {
-  return (
-    <Container maxWidth="sm">
-      <Paper elevation={3} style={{ padding: "20px" }}>
-        <Typography variant="h4" align="center" gutterBottom>
-          Invoice
-        </Typography>
-        <TableContainer>
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell>Description</TableCell>
-                <TableCell align="right">Quantity</TableCell>
-                <TableCell align="right">Unit Price</TableCell>
-                <TableCell align="right">Total</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {/* Loop through your items */}
-              <TableRow>
-                <TableCell>Item 1</TableCell>
-                <TableCell align="right">2</TableCell>
-                <TableCell align="right">$10.00</TableCell>
-                <TableCell align="right">$20.00</TableCell>
-              </TableRow>
-              {/* Add more rows for other items */}
-            </TableBody>
-          </Table>
-        </TableContainer>
-        <Typography variant="h6" align="right" style={{ marginTop: "20px" }}>
-          Total: $20.00
-        </Typography>
-      </Paper>
-    </Container>
-  );
-};
+class ManageInvoices extends Component {
+  render() {
+    return (
+      <div className="App d-flex flex-column align-items-center justify-content-center w-100">
+        <Container>
+          <InvoiceForm />
+        </Container>
+      </div>
+    );
+  }
+}
 
 export default ManageInvoices;
